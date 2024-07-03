@@ -56,6 +56,12 @@ h1 img {
     border: rgb(84, 62, 138) solid 5px;
 }
 
+.start-buttons button:hover {
+    cursor: pointer;
+    background-color: #fff4a7;
+    text-decoration: underline;
+}
+
 .instructions {
     position: relative;
     background-color: #573f8cbd;
@@ -66,20 +72,7 @@ h1 img {
     border: rgb(84, 62, 138) solid 5px;
 }
 
-.close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-right: 15px;
-    font-size: 40px;
-    border: none;
-    background: none;
-    color: white;
-    line-height: 40px;
-}
-
-.close-button:hover {
-    cursor: pointer;
-    color: #fff082
+.hide-instructions {
+    display: none;
 }
 
