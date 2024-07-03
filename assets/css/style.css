@@ -18,9 +18,8 @@ h1 {
     padding-bottom: 30px;
 }
 
-h1 img {
-    height: 50px;
-    padding-right: 10px; 
+.logo {
+    height: 100px;
 }
 
 /* Intro styles */
@@ -75,4 +74,34 @@ h1 img {
 .hide-instructions {
     display: none;
 }
+
+/* --------- Media queries */
+
+@media (max-width: 620px) {
+    .logo {
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        padding-bottom: 15px;
+    }
+
+    .start-buttons button {
+        padding: 15px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 410px) {
+    h1 {
+        font-size: 1.5rem;
+        padding-bottom: 15px;
+    }
+
+    .start-buttons button {
+        padding: 15px;
+        font-size: 1rem;
+    }
+} */
 
