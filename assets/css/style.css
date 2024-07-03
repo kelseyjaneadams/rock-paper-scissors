@@ -4,10 +4,10 @@
     margin: 0;
     padding: 0;
     box-sizing:border-box;
+    font-family: "poppins", sans-serif;
 }
 
 body {
-    font-family: "poppins", sans-serif;
     padding: 20px;
     text-align: center;
 }
@@ -31,9 +31,7 @@ h1 img {
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    gap: 40px;
-
-    
+    gap: 40px; 
 }
 
 .intro p {
@@ -51,11 +49,37 @@ h1 img {
     margin: 0 auto;
     margin-bottom: 10px;
     padding: 40px;
-    font-family: "poppins", sans-serif;
     font-size: 2rem;
     font-weight: 600;
     border-radius: 20px;
     background-color: #fff082;
     border: rgb(84, 62, 138) solid 5px;
+}
+
+.instructions {
+    position: relative;
+    background-color: #573f8cbd;
+    margin: 0 30px;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    border: rgb(84, 62, 138) solid 5px;
+}
+
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 15px;
+    font-size: 40px;
+    border: none;
+    background: none;
+    color: white;
+    line-height: 40px;
+}
+
+.close-button:hover {
+    cursor: pointer;
+    color: #fff082
 }
 
