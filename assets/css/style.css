@@ -19,13 +19,18 @@ h1 {
 }
 
 .logo {
-    height: 100px;
+    height: 60px;
+}
+
+#game-area {
+    background-color: rgb(229, 217, 255);
+    /* height: 70vh; for intro screen */
+    height: 80vh;
 }
 
 /* Intro styles */
 .intro {
-    background-color: rgb(229, 217, 255);
-    height: 70vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,6 +80,92 @@ h1 {
     display: none;
 }
 
+/* Game styles */
+
+.results-area {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10% 0 10%;
+}
+
+.results-area h2 {
+    padding: 20px;
+}
+
+.results-area img {
+    height: 100%;
+    padding: 20px;
+}
+
+.user-image-div, .computer-image-div {
+    height: 280px;
+    width: 280px;
+    border: black solid 4px;
+    background-color: #573f8cbd;
+}
+
+.user-selection {
+    display: flex;
+    justify-content: center;
+    height: 180px;
+    gap: 15px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.game-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-buttons button {
+    width: 15%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color: #fff082;
+    border: rgb(84, 62, 138) solid 5px;
+}
+
+.game-buttons button:hover {
+    cursor: pointer;
+    background-color: #fff4a7;
+    text-decoration: underline;
+}
+
+.round-scores {
+    display: flex;
+    border: red solid 5px;
+    width: 100%;
+    height: 50px;
+}
+
+.computer-choice .round-scores {
+    justify-content: flex-end
+}
+
+.round-win {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background: black;
+    margin: 5px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown h2 {
+    font-size: 2.5rem;
+    color: rgb(84, 62, 138);
+}
+
 /* --------- Media queries */
 
 @media (max-width: 620px) {
@@ -103,5 +194,5 @@ h1 {
         padding: 15px;
         font-size: 1rem;
     }
-} */
+} 
 

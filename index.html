@@ -18,25 +18,73 @@
 </head>
 
 <body>
-    <section id="main-section">
+    <section>
         <img class="logo" src="assets/images/rockpaperscissors.webp" alt="Rock Paper Scissors hands">
         <h1>Rock Paper Scissors</h1>
 
-        <div class="intro">
-            <div class="instructions hide-instructions">
-                <p>Each round, the user must click one of three options. Rock, Paper, or Scissors. Rock beats scissors.
-                    Scissors beats paper. Paper beats Rock. In order to win the round the user must beat the computer
-                    twice,
-                    which will
-                    randomly select an option.
-                </p>
+        <main id="game-area">
+            <!-- <div class="intro">
+                <div class="instructions hide-instructions">
+                    <p>Each round, the user must click one of three options. Rock, Paper, or Scissors. Rock beats scissors.
+                        Scissors beats paper. Paper beats Rock. In order to win the round the user must beat the computer
+                        twice,
+                        which will
+                        randomly select an option.
+                    </p>
+                </div>
+    
+                <div class="start-buttons">
+                    <button onclick="hideInstructions()" class="instructions-button">Rules</button>
+                    <button class="play-button">Let's Play</button>
+                </div> -->
+            <!-- </div> -->
+
+            <!-- //next stuff -->
+
+            <div class="results-area">
+                <div class="user-choice">
+                    <h2>Player</h2>
+                    <div class="user-image-div">
+                        <img src="assets/images/rock-image.webp" alt="A hand clenching into a fist to represent 'rock'.">
+                    </div>
+                    <div class="round-scores">
+                        <div class="round-win round-one"></div>
+                        <div class="round-win round-two"></div>
+                    </div>
+                </div>
+
+                <div class="countdown">
+                    <h2>VS</h2>
+                </div>
+
+                <div class="computer-choice">
+                    <h2>Computer</h2>
+                    <div class="computer-image-div">
+                        <img src="assets/images/rock-image.webp" alt="A hand clenching into a fist to represent 'rock'.">
+                    </div>
+                    <div class="round-scores">
+                        <div class="round-win round-one"></div>
+                        <div class="round-win round-two"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="start-buttons">
-                <button onclick="hideInstructions()" class="instructions-button">Rules</button>
-                <button class="play-button">Let's Play</button>
+            <div class="user-selection">
+                <img class="rock" src="assets/images/rock-image.webp" alt="A hand clenching into a fist to represent 'rock'.">
+                <img class = "paper" src="assets/images/paper-image.webp" alt="A flat open hand to represent 'paper'.">
+                <img class="scissors" src="assets/images/scissors-image.webp" alt="A hand holding the peace sign to represent 'scissors'.">
             </div>
-        </div>
+
+            <div class="game-buttons">
+            <button>Go</button>
+            <button>Exit</button>
+            </div>
+
+            
+
+
+        </main>
+        
 
         <!-- <div class="game-area">
             <div class="results-area">
