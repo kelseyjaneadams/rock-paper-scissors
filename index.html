@@ -19,8 +19,10 @@
 
 <body>
     <section>
-        <img class="logo" src="assets/images/rockpaperscissors.webp" alt="Rock Paper Scissors hands">
-        <h1>Rock Paper Scissors</h1>
+        <div class="title">
+            <img class="logo" src="assets/images/rockpaperscissors.webp" alt="Rock Paper Scissors hands">
+            <h1>Rock Paper Scissors</h1>
+        </div>
 
         <main id="game-area">
             <div class="intro">
@@ -67,12 +69,16 @@
                         </div>
                     </div>
                 </div>
-    
-                <div class="user-selection">
-                    <img class="rock" src="assets/images/rock-image.webp" alt="A hand clenching into a fist to represent 'rock'.">
-                    <img class = "paper" src="assets/images/paper-image.webp" alt="A flat open hand to represent 'paper'.">
-                    <img class="scissors" src="assets/images/scissors-image.webp" alt="A hand holding the peace sign to represent 'scissors'.">
+
+                <div class="user-selection-parent">
+                    <p>Choose your hand</p>
+                    <div class="user-selection">
+                        <img class="rock" src="assets/images/rock-image.webp" alt="A hand clenching into a fist to represent 'rock'.">
+                        <img class = "paper" src="assets/images/paper-image.webp" alt="A flat open hand to represent 'paper'.">
+                        <img class="scissors" src="assets/images/scissors-image.webp" alt="A hand holding the peace sign to represent 'scissors'.">
+                    </div>
                 </div>
+                
     
                 <div class="game-buttons">
                     <button>Go</button>

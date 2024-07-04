@@ -18,7 +18,7 @@ function hideInstructions () {
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
 
-// note ** where should I put these? 
+// note ** where should I put these?
 const introDiv = document.querySelector(".intro")
 const resultsAreaDiv = document.querySelector(".results-area-parent")
 
