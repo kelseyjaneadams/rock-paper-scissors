@@ -1,5 +1,4 @@
 /* Global Style */
-
 *{
     margin: 0;
     padding: 0;
@@ -80,8 +79,11 @@ h1 {
     display: none;
 }
 
-/* Game styles */
+.hide-intro-div {
+    display: none;
+}
 
+/* Game styles */
 .results-area {
     display: flex;
     justify-content: space-around;
@@ -164,6 +166,10 @@ h1 {
 .countdown h2 {
     font-size: 2.5rem;
     color: rgb(84, 62, 138);
+}
+
+.hide-results-area {
+    display: none;
 }
 
 /* --------- Media queries */
