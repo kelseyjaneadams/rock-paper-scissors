@@ -1,16 +1,19 @@
-// add event listeners for buttons //
+// Add event listeners for buttons //
+// game play buttons
 document.getElementById("rules-button").addEventListener("click", hideInstructions);
 document.getElementById("play-button").addEventListener("click", playButton);
 document.getElementById("exit-button").addEventListener("click", exitButton);
+document.getElementById("go-button").addEventListener("click", goButton);
 //user selection buttons
 document.getElementById("rock").addEventListener("click", userOption);
 document.getElementById("paper").addEventListener("click", userOption);
 document.getElementById("scissors").addEventListener("click", userOption);
 
-
 // Declare variables
 const introDiv = document.getElementById("intro");
 const resultsAreaDiv = document.getElementById("results-area-parent");
+const computerImageDiv = document.getElementById("computer-image-div")
+const userImageDiv = document.getElementById("user-image-div")
 let userSelection = '';
 let computerSelection = '';
 
@@ -35,8 +38,8 @@ function hideInstructions () {
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
 function playButton () {
-    resultsAreaDiv.classList.remove("hide-results-area");
-    introDiv.classList.add("hide-intro-div");
+    resultsAreaDiv.classList.remove("hide-results-area")
+    introDiv.classList.add("hide-intro-div")
 }
 
 /** 
@@ -64,7 +67,22 @@ function userOption(event) {
 function computerOption() {
     const options = ['rock', 'paper', 'scissors'];
     const randomOption = Math.floor(Math.random() * options.length) + 1;
-    const computerSelection = options[randomOption - 1];
+    computerSelection = options[randomOption - 1];
     return computerSelection;
 }
-console.log("computers choice", computerOption())
+// console.log("computers choice", computerOption())
+
+/**
+ * go button function to generate random choice
+ */
+
+function goButton () {
+    computerOption()
+    function generateImage (option) {
+        const imgElement = `
+            <img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`
+        return imgElement
+    }
+    computerImageDiv.innerHTML = generateImage(computerSelection)
+    userImageDiv.innerHTML = generateImage(userSelection)
+}
