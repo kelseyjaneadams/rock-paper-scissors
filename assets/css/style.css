@@ -28,7 +28,7 @@ h1 {
     height: 60px;
 }
 
-#game-area {
+.game-area {
     background-color: rgb(229, 217, 255);
     height: 85vh;
 }
@@ -71,7 +71,7 @@ h1 {
     text-decoration: underline;
 }
 
-.instructions {
+.rules {
     position: relative;
     background-color: #573f8cbd;
     margin: 0 30px;
@@ -81,7 +81,7 @@ h1 {
     border: rgb(84, 62, 138) solid 5px;
 }
 
-.hide-instructions {
+.hide-rules {
     display: none;
 }
 

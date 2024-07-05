@@ -18,30 +18,27 @@
 </head>
 
 <body>
-    <section>
-        <div class="title">
+    <main>
+        <header class="title">
             <img class="logo" src="assets/images/rockpaperscissors.webp" alt="Rock Paper Scissors hands">
             <h1>Rock Paper Scissors</h1>
-        </div>
+        </header>
 
-        <main id="game-area">
-            <div class="intro">
-                <div class="instructions hide-instructions">
-                    <p>Each round, the user must click one of three options. Rock, Paper, or Scissors. Rock beats scissors.
-                        Scissors beats paper. Paper beats Rock. In order to win the round the user must beat the computer
-                        twice,
-                        which will
-                        randomly select an option.
+        <div class="game-area">
+            <div id="intro" class="intro">
+                <div id="rules" class="rules hide-rules">
+                    <p>One game is 3 rounds. Each round, the user must click one of three options. Rock, Paper, or Scissors. Rock beats scissors.
+                        Scissors beats paper. Paper beats Rock. In order to win the game the user must beat the computer twice.
                     </p>
                 </div>
                 <div class="start-buttons">
-                    <button onclick="hideInstructions()" class="instructions-button">Rules</button>
-                    <button onclick="playButton()" class="play-button">Let's Play</button>
+                    <button id="rules-button" class="rules-button">Rules</button>
+                    <button id="play-button" class="play-button">Let's Play</button>
                 </div>
             </div>
 
 
-            <div class="results-area-parent hide-results-area">
+            <div id="results-area-parent" class="results-area-parent hide-results-area">
                 <div class="results-area">
                     <div class="user-choice">
                         <h2>Player</h2>
@@ -82,15 +79,10 @@
     
                 <div class="game-buttons">
                     <button>Go</button>
-                    <button class="exit-button" onclick="exitButton()">Exit</button>
+                    <button id="exit-button" class="exit-button">Exit</button>
                 </div>
             </div>
-            
-
-            
-
-
-        </main>
+        </div>
         
 
         <!-- <div class="game-area">
@@ -114,10 +106,7 @@
             <button>Go</button>
 
         </div> -->
-
-
-
-    </section>
+    </main>
 
 
     <script src="assets/js/index.js"></script>

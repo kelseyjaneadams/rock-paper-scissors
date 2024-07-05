@@ -1,15 +1,21 @@
+// add event listeners for buttons //
+
+document.getElementById("rules-button").addEventListener("click", hideInstructions)
+document.getElementById("play-button").addEventListener("click", playButton)
+document.getElementById("exit-button").addEventListener("click", exitButton)
+
 /** 
  * Function to show and hide the instructions on the start page.
  */
 function hideInstructions () {
-    const howToPlayButton = document.querySelector(".instructions-button")
-    const instructionsDiv = document.querySelector(".instructions")
+    const howToPlayButton = document.getElementById("rules-button")
+    const instructionsDiv = document.getElementById("rules")
 
-    if (instructionsDiv.classList.contains("hide-instructions")) {
-        instructionsDiv.classList.remove("hide-instructions")
+    if (instructionsDiv.classList.contains("hide-rules")) {
+        instructionsDiv.classList.remove("hide-rules")
         howToPlayButton.innerHTML = "Hide Rules"
     } else {
-        instructionsDiv.classList.add("hide-instructions")
+        instructionsDiv.classList.add("hide-rules")
         howToPlayButton.innerHTML = "Rules"
     }
 }
@@ -18,9 +24,9 @@ function hideInstructions () {
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
 
-// note ** where should I put these?
-const introDiv = document.querySelector(".intro")
-const resultsAreaDiv = document.querySelector(".results-area-parent")
+// Declare variables
+const introDiv = document.getElementById("intro")
+const resultsAreaDiv = document.getElementById("results-area-parent")
 
 function playButton () {
    
