@@ -1,8 +1,17 @@
 // add event listeners for buttons //
-
 document.getElementById("rules-button").addEventListener("click", hideInstructions)
 document.getElementById("play-button").addEventListener("click", playButton)
 document.getElementById("exit-button").addEventListener("click", exitButton)
+//user selection buttons
+document.getElementById("rock").addEventListener("click", userOption)
+document.getElementById("paper").addEventListener("click", userOption)
+document.getElementById("scissors").addEventListener("click", userOption)
+
+
+// Declare variables
+const introDiv = document.getElementById("intro")
+const resultsAreaDiv = document.getElementById("results-area-parent")
+let userSelection = '';
 
 /** 
  * Function to show and hide the instructions on the start page.
@@ -23,20 +32,25 @@ function hideInstructions () {
 /** 
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
-
-// Declare variables
-const introDiv = document.getElementById("intro")
-const resultsAreaDiv = document.getElementById("results-area-parent")
-
 function playButton () {
-   
     resultsAreaDiv.classList.remove("hide-results-area")
     introDiv.classList.add("hide-intro-div")
 }
 
+/** 
+ * Exit Button Function to leave game area and return to the start page.
+ */
 function exitButton () {
     const exitButton = document.querySelector(".exit-button")
 
     resultsAreaDiv.classList.add("hide-results-area")
     introDiv.classList.remove("hide-intro-div")
+}
+
+/**
+ * User option function to handle the user's choice
+ */
+function userOption(event) {
+    userSelection = event.target.id;
+    console.log("User has selected an option", userSelection)
 }
