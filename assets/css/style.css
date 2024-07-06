@@ -173,6 +173,7 @@ h1 {
 
 .countdown {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 200px;
@@ -189,6 +190,7 @@ h1 {
 
 /* Modal style */
 .modal {
+    visibility: hidden;
     position: absolute;
     z-index: 1;
     left: 50%;

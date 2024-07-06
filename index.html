@@ -49,14 +49,14 @@
     
                     <div class="countdown">
                         <h2>VS</h2>
-                        <p id="who-won">the winner is...</p>
+                        <p id="game-draw"></p>
                     </div>
     
                     <div class="computer-choice">
                         <h2>Computer</h2>
                         <div id="computer-image-div" class="computer-image-div">
                         </div>
-                        <div id="user-score" class="round-scores"></div>
+                        <div id="computer-score" class="round-scores"></div>
                     </div>
                 </div>
 
@@ -75,14 +75,13 @@
                 </div>
             </div>
         </div>
+        <div id="game-over-modal" class="modal">
+            <h2>Game Over!</h2>
+            <p id="modal-message">someone is the winner</p>
+            <button id="play-again">Play Again</button>
+            <button id="exit">Exit</button>
+        </div>
     </main>
-
-    <div id="gameOverModal" class="modal">
-        <h2>Game Over!</h2>
-        <p>someone is the winner</p>
-        <button id="play-again">Play Again</button>
-        <button id="exit">Exit</button>
-    </div>
 
 
     <script src="assets/js/index.js"></script>

@@ -22,9 +22,6 @@ let computerSelection = '';
 let userScore = 0;
 let computerScore = 0;
 
-console.log('userstart', userScore)
-    console.log('computerstart', computerScore)
-
 /** 
  * Function to show and hide the instructions on the start page.
  */
@@ -112,6 +109,19 @@ function updateScore (winner) {
     } else if (winner === "computer") {
         computerScoreDiv.appendChild(scoreElement)
     }
+
+    if (userScore === 2 || computerScore === 2) {
+        endGame(winner)
+    }
+}
+
+/**
+ * End the game and declare the winner
+ */
+function endGame(winner) {
+    const modalMessage = document.getElementById("modal-message");
+    modalMessage.innerHTML = winner === 'user' ? 'You Win!' : 'You Lose!';
+    document.getElementById("game-over-modal").style.visibility = "visible";
 }
 
 /**
@@ -119,23 +129,23 @@ function updateScore (winner) {
  * Update the score of the round
  */
 function getWinner () {
-    const winnerP = document.getElementById("who-won")
+    const gameDraw = document.getElementById("game-draw")
 
     // checking for a draw
     if (computerSelection === userSelection) {
-        winnerP.innerHTML = "DRAW"
+        gameDraw.innerHTML = "The round is a draw"
         return
+    } else {
+        gameDraw.innerHTML = ""
     }
 
     // check for Rock
     if (userSelection === "rock") {
         if (computerSelection === "scissors") {
-            winnerP.innerHTML = "USER WINS"
             userScore++
             updateScore("user")
             return
         } else {
-            winnerP.innerHTML = "COMPUTER WINS"
             computerScore++
             updateScore("computer")
             return
@@ -145,12 +155,10 @@ function getWinner () {
     //check for Paper
     if (userSelection === "paper") {
         if (computerSelection === "rock") {
-            winnerP.innerHTML = "USER WINS"
             userScore++
             updateScore("user")
             return
         } else {
-            winnerP.innerHTML = "COMPUTER WINS"
             computerScore++
             updateScore("computer")
             return
@@ -160,12 +168,10 @@ function getWinner () {
      //check for Scissors
      if (userSelection === "scissors") {
         if (computerSelection === "paper") {
-            winnerP.innerHTML = "USER WINS"
             userScore++
             updateScore("user")
             return
         } else {
-        winnerP.innerHTML = "COMPUTER WINS"
         computerScore++
         updateScore("computer")
         return
