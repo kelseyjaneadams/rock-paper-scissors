@@ -63,6 +63,9 @@ function exitButton () {
 
 /**
  * User option function to handle the user's choice
+ * Add a border to the user option image when selected
+ * Remove the border if another option is selected
+ * Sets the userSelection variable to the id of the selected image
  */
 function userOption(event) {
     optionImgs.forEach(img => {
@@ -77,6 +80,7 @@ function userOption(event) {
 
 /**
  * Computer option function to generate random choice
+ * Save computer choice to computerSelection variable
  */
 function computerOption() {
     const options = ['rock', 'paper', 'scissors'];
@@ -84,15 +88,16 @@ function computerOption() {
     computerSelection = options[randomOption - 1];
     return computerSelection;
 }
-// console.log("computers choice", computerOption())
 
 /**
  * Go button takes both user and computer inputs and renders that selection on the page
  * Generates the inputs images in the game area
  * Trigger the modal
- * Updates round score 
+ * Updates round score led indicator 
+ * Remove the user option image border for the next round
+ * Run a conditional check to verify computerSelection & userSelection have a value
+ * If no value, game cannot run, trigger alert for the user
  */
-
 function goButton () {
     computerOption()
     if (computerSelection && userSelection) {
@@ -116,9 +121,10 @@ function goButton () {
 
 /**
  * Update the score indicators on the page
+ * Create element and add to score div
+ * Check user score and call endGame function if winning score is reached
  */
 function updateScore (winner) {
-    //create element and add to score div
     const scoreElement = document.createElement('div')
     scoreElement.classList.add("round-win")
 
@@ -135,6 +141,8 @@ function updateScore (winner) {
 
 /**
  * End the game and declare the winner
+ * Set the modal message to declare the winner
+ * Open the modal
  */
 function endGame(winner) {
     const modalMessage = document.getElementById("modal-message");
@@ -144,6 +152,10 @@ function endGame(winner) {
 
 // NOTE** in these two functions in getting the game-over-modal seperately, should I define it as a global variable?
 
+/**
+ * Reset the game function to clear scores, player options
+ * Remove user selection option borders
+ */
 function resetGame() {
     userScore = 0;
     computerScore = 0;
@@ -155,6 +167,10 @@ function resetGame() {
     });
 }
 
+/**
+ * Close the modal function to close modal and resets the game 
+ * Return user to intro screen
+ */
 function closeModal() {
     document.getElementById("game-over-modal").style.visibility = "hidden";
     resultsAreaDiv.classList.add("hide-results-area");
@@ -163,7 +179,8 @@ function closeModal() {
 }
 
 /**
- * Reset and start a new game when play again is clicked in the modal
+ * Play again function to reset the game area 
+ * Hide the modal
  */
 function playAgain () {
     resetGame()
