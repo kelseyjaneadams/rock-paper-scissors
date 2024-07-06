@@ -4,6 +4,9 @@ document.getElementById("rules-button").addEventListener("click", hideInstructio
 document.getElementById("play-button").addEventListener("click", playButton);
 document.getElementById("exit-button").addEventListener("click", exitButton);
 document.getElementById("go-button").addEventListener("click", goButton);
+//modal controls
+document.getElementById("modal-exit").addEventListener("click", closeModal);
+
 //user selection buttons
 document.getElementById("rock").addEventListener("click", userOption);
 document.getElementById("paper").addEventListener("click", userOption);
@@ -131,6 +134,14 @@ function endGame(winner) {
     const modalMessage = document.getElementById("modal-message");
     modalMessage.innerHTML = winner === 'user' ? 'You Win!' : 'You Lose!';
     document.getElementById("game-over-modal").style.visibility = "visible";
+}
+
+// NOTE** in these two functions in getting the game-over-modal seperately, should I define it as a global variable?
+
+function closeModal() {
+    document.getElementById("game-over-modal").style.visibility = "hidden";
+    resultsAreaDiv.classList.add("hide-results-area");
+    introDiv.classList.remove("hide-intro-div");
 }
 
 /**
