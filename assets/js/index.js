@@ -95,6 +95,7 @@ function computerOption() {
 /**
  * Function to handle error when no user option is selected and user clicks 'GO' button
  * Flags red text and img border to alert user
+ * Clear the user and computer selected images
  */
 function noSelectionError () {
     userChoiceP.style.color = ("red")
@@ -103,6 +104,8 @@ function noSelectionError () {
         img.style.border = 'red solid 5px'
         img.style.borderRadius = '50%';
     });
+    computerImageDiv.innerHTML = ''
+    userImageDiv.innerHTML = ''
 }
 
 /**
@@ -122,6 +125,7 @@ function resetUserSelection () {
  * Remove the user option image border for the next round
  * Run a conditional check to verify computerSelection & userSelection have a value
  * If no value, game cannot run, trigger alert for the user
+ * Reset user selection before next round
  */
 function goButton () {
     computerOption()
@@ -142,7 +146,7 @@ function goButton () {
         console.log('no selection')
         noSelectionError()
     }
-       
+    userSelection = ''
 }
 
 /**
@@ -181,6 +185,7 @@ function endGame(winner) {
 /**
  * Reset the game function to clear scores, player options
  * Remove user selection option borders
+ * Clear userSelection variable for next game
  */
 function resetGame() {
     userScore = 0;
@@ -191,6 +196,10 @@ function resetGame() {
     optionImgs.forEach(img => {
         img.style.border = 'none'
     });
+
+    computerImageDiv.innerHTML = ''
+    userImageDiv.innerHTML = ''
+    userSelection = ''
 }
 
 /**
