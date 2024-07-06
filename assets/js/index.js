@@ -6,6 +6,7 @@ document.getElementById("exit-button").addEventListener("click", exitButton);
 document.getElementById("go-button").addEventListener("click", goButton);
 //modal controls
 document.getElementById("modal-exit").addEventListener("click", closeModal);
+document.getElementById("modal-play-again").addEventListener("click", playAgain);
 
 //user selection buttons
 document.getElementById("rock").addEventListener("click", userOption);
@@ -55,9 +56,9 @@ function playButton () {
  */
 function exitButton () {
     const exitButton = document.querySelector(".exit-button");
-
     resultsAreaDiv.classList.add("hide-results-area");
     introDiv.classList.remove("hide-intro-div");
+    resetGame()
 }
 
 /**
@@ -71,9 +72,7 @@ function userOption(event) {
     const selectedImage = event.target;
     selectedImage.style.border = '#7d12ff solid 4px';
     selectedImage.style.borderRadius = '50%';
-
     userSelection = selectedImage.id;
-    console.log("User has selected an option", userSelection)
 }
 
 /**
@@ -96,15 +95,23 @@ function computerOption() {
 
 function goButton () {
     computerOption()
-    function generateImage (option) {
-        const imgElement = `
-            <img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`
-        return imgElement
-    }
-    computerImageDiv.innerHTML = generateImage(computerSelection)
-    userImageDiv.innerHTML = generateImage(userSelection)
+    if (computerSelection && userSelection) {
+        function generateImage (option) {
+            const imgElement = `
+                <img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`
+            return imgElement
+        }
+        computerImageDiv.innerHTML = generateImage(computerSelection)
+        userImageDiv.innerHTML = generateImage(userSelection)
 
-    getWinner()
+        getWinner()
+        optionImgs.forEach(img => {
+            img.style.border = 'none'
+        });
+    } else {
+        console.log('no selection')
+    }
+       
 }
 
 /**
@@ -154,6 +161,14 @@ function closeModal() {
     introDiv.classList.remove("hide-intro-div");
     resetGame()
 }
+
+/**
+ * Reset and start a new game when play again is clicked in the modal
+ */
+function playAgain () {
+    resetGame()
+    document.getElementById("game-over-modal").style.visibility = "hidden";
+} 
 
 /**
  * Get winner function to calculate the winner of the round
