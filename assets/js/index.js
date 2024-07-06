@@ -19,6 +19,7 @@ const computerImageDiv = document.getElementById("computer-image-div");
 const userImageDiv = document.getElementById("user-image-div");
 const userScoreDiv = document.getElementById("user-score");
 const computerScoreDiv = document.getElementById("computer-score");
+const optionImgs = document.querySelectorAll('.option-img');
 
 let userSelection = '';
 let computerSelection = '';
@@ -63,8 +64,6 @@ function exitButton () {
  * User option function to handle the user's choice
  */
 function userOption(event) {
-    const optionImgs = document.querySelectorAll('.option-img');
-
     optionImgs.forEach(img => {
         img.style.border = 'none'
     });
@@ -112,7 +111,7 @@ function goButton () {
  * Update the score indicators on the page
  */
 function updateScore (winner) {
-    //create element and adding to score div
+    //create element and add to score div
     const scoreElement = document.createElement('div')
     scoreElement.classList.add("round-win")
 
@@ -138,10 +137,22 @@ function endGame(winner) {
 
 // NOTE** in these two functions in getting the game-over-modal seperately, should I define it as a global variable?
 
+function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    userScoreDiv.innerHTML = '';
+    computerScoreDiv.innerHTML = '';
+
+    optionImgs.forEach(img => {
+        img.style.border = 'none'
+    });
+}
+
 function closeModal() {
     document.getElementById("game-over-modal").style.visibility = "hidden";
     resultsAreaDiv.classList.add("hide-results-area");
     introDiv.classList.remove("hide-intro-div");
+    resetGame()
 }
 
 /**
