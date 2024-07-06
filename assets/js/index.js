@@ -12,11 +12,18 @@ document.getElementById("scissors").addEventListener("click", userOption);
 // Declare variables
 const introDiv = document.getElementById("intro");
 const resultsAreaDiv = document.getElementById("results-area-parent");
-const computerImageDiv = document.getElementById("computer-image-div")
-const userImageDiv = document.getElementById("user-image-div")
+const computerImageDiv = document.getElementById("computer-image-div");
+const userImageDiv = document.getElementById("user-image-div");
+const userScoreDiv = document.getElementById("user-score");
+const computerScoreDiv = document.getElementById("computer-score");
+
 let userSelection = '';
 let computerSelection = '';
+let userScore = 0;
+let computerScore = 0;
 
+console.log('userstart', userScore)
+    console.log('computerstart', computerScore)
 
 /** 
  * Function to show and hide the instructions on the start page.
@@ -73,7 +80,10 @@ function computerOption() {
 // console.log("computers choice", computerOption())
 
 /**
- * go button function to generate random choice
+ * Go button takes both user and computer inputs and renders that selection on the page
+ * Generates the inputs images in the game area
+ * Trigger the modal
+ * Updates round score 
  */
 
 function goButton () {
@@ -85,4 +95,80 @@ function goButton () {
     }
     computerImageDiv.innerHTML = generateImage(computerSelection)
     userImageDiv.innerHTML = generateImage(userSelection)
+
+    getWinner()
+}
+
+/**
+ * Update the score indicators on the page
+ */
+function updateScore (winner) {
+    //create element and adding to score div
+    const scoreElement = document.createElement('div')
+    scoreElement.classList.add("round-win")
+
+    if (winner === "user") {
+        userScoreDiv.appendChild(scoreElement)
+    } else if (winner === "computer") {
+        computerScoreDiv.appendChild(scoreElement)
+    }
+}
+
+/**
+ * Get winner function to calculate the winner of the round
+ * Update the score of the round
+ */
+function getWinner () {
+    const winnerP = document.getElementById("who-won")
+
+    // checking for a draw
+    if (computerSelection === userSelection) {
+        winnerP.innerHTML = "DRAW"
+        return
+    }
+
+    // check for Rock
+    if (userSelection === "rock") {
+        if (computerSelection === "scissors") {
+            winnerP.innerHTML = "USER WINS"
+            userScore++
+            updateScore("user")
+            return
+        } else {
+            winnerP.innerHTML = "COMPUTER WINS"
+            computerScore++
+            updateScore("computer")
+            return
+        }
+    }
+
+    //check for Paper
+    if (userSelection === "paper") {
+        if (computerSelection === "rock") {
+            winnerP.innerHTML = "USER WINS"
+            userScore++
+            updateScore("user")
+            return
+        } else {
+            winnerP.innerHTML = "COMPUTER WINS"
+            computerScore++
+            updateScore("computer")
+            return
+        }
+    } 
+
+     //check for Scissors
+     if (userSelection === "scissors") {
+        if (computerSelection === "paper") {
+            winnerP.innerHTML = "USER WINS"
+            userScore++
+            updateScore("user")
+            return
+        } else {
+        winnerP.innerHTML = "COMPUTER WINS"
+        computerScore++
+        updateScore("computer")
+        return
+        }
+    }   
 }
