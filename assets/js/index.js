@@ -60,10 +60,19 @@ function exitButton () {
  * User option function to handle the user's choice
  */
 function userOption(event) {
-    userSelection = event.target.id;
+    const optionImgs = document.querySelectorAll('.option-img');
+
+    optionImgs.forEach(img => {
+        img.style.border = 'none'
+    });
+
+    const selectedImage = event.target;
+    selectedImage.style.border = '#7d12ff solid 4px';
+    selectedImage.style.borderRadius = '50%';
+
+    userSelection = selectedImage.id;
     console.log("User has selected an option", userSelection)
 }
-
 
 /**
  * Computer option function to generate random choice
