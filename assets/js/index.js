@@ -21,6 +21,7 @@ const userImageDiv = document.getElementById("user-image-div");
 const userScoreDiv = document.getElementById("user-score");
 const computerScoreDiv = document.getElementById("computer-score");
 const optionImgs = document.querySelectorAll('.option-img');
+let userChoiceP = document.getElementById("user-selection-text")
 
 let userSelection = '';
 let computerSelection = '';
@@ -66,16 +67,18 @@ function exitButton () {
  * Add a border to the user option image when selected
  * Remove the border if another option is selected
  * Sets the userSelection variable to the id of the selected image
+ * ternary condition to check if the no selection error was triggered and if so clears the error on option click
  */
 function userOption(event) {
     optionImgs.forEach(img => {
         img.style.border = 'none'
     });
-
     const selectedImage = event.target;
     selectedImage.style.border = '#7d12ff solid 4px';
     selectedImage.style.borderRadius = '50%';
     userSelection = selectedImage.id;
+
+    userChoiceP.style.color = ("red") ? resetUserSelection() : null
 }
 
 /**
@@ -87,6 +90,28 @@ function computerOption() {
     const randomOption = Math.floor(Math.random() * options.length) + 1;
     computerSelection = options[randomOption - 1];
     return computerSelection;
+}
+
+/**
+ * Function to handle error when no user option is selected and user clicks 'GO' button
+ * Flags red text and img border to alert user
+ */
+function noSelectionError () {
+    userChoiceP.style.color = ("red")
+    userChoiceP.innerHTML = 'Select your hand to play'
+    optionImgs.forEach(img => {
+        img.style.border = 'red solid 5px'
+        img.style.borderRadius = '50%';
+    });
+}
+
+/**
+ * Function to reset the error
+ * Reverts the color and text change
+ */
+function resetUserSelection () {
+    userChoiceP.style.color = ("black")
+    userChoiceP.innerHTML = 'Choose your hand'
 }
 
 /**
@@ -115,6 +140,7 @@ function goButton () {
         });
     } else {
         console.log('no selection')
+        noSelectionError()
     }
        
 }
