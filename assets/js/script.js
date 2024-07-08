@@ -21,7 +21,7 @@ const userImageDiv = document.getElementById("user-image-div");
 const userScoreDiv = document.getElementById("user-score");
 const computerScoreDiv = document.getElementById("computer-score");
 const optionImgs = document.querySelectorAll('.option-img');
-let userChoiceP = document.getElementById("user-selection-text")
+const userChoiceParagraph = document.getElementById("user-selection-text")
 
 let userSelection = '';
 let computerSelection = '';
@@ -31,7 +31,7 @@ let computerScore = 0;
 /** 
  * Function to show and hide the instructions on the start page.
  */
-function hideInstructions () {
+function hideInstructions() {
     const howToPlayButton = document.getElementById("rules-button");
     const instructionsDiv = document.getElementById("rules");
 
@@ -47,7 +47,7 @@ function hideInstructions () {
 /** 
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
-function playButton () {
+function playButton() {
     resultsAreaDiv.classList.remove("hide-results-area")
     introDiv.classList.add("hide-intro-div")
 }
@@ -55,10 +55,11 @@ function playButton () {
 /** 
  * Exit Button Function to leave game area and return to the start page.
  */
-function exitButton () {
-    const exitButton = document.querySelector(".exit-button");
+function exitButton() {
+    const exitButton = document.getElementsByClassName(".exit-button");
     resultsAreaDiv.classList.add("hide-results-area");
     introDiv.classList.remove("hide-intro-div");
+    hideInstructions()
     resetGame()
 }
 
@@ -78,7 +79,7 @@ function userOption(event) {
     selectedImage.style.borderRadius = '50%';
     userSelection = selectedImage.id;
 
-    userChoiceP.style.color = ("red") ? resetUserSelection() : null
+    userChoiceParagraph.style.color = ("red") ? resetUserSelection() : null
 }
 
 /**
@@ -97,9 +98,9 @@ function computerOption() {
  * Flags red text and img border to alert user
  * Clear the user and computer selected images
  */
-function noSelectionError () {
-    userChoiceP.style.color = ("red")
-    userChoiceP.innerHTML = 'Select your hand to play'
+function noSelectionError() {
+    userChoiceParagraph.style.color = ("red")
+    userChoiceParagraph.innerHTML = 'Select your hand to play'
     optionImgs.forEach(img => {
         img.style.border = 'red solid 5px'
         img.style.borderRadius = '50%';
@@ -112,9 +113,9 @@ function noSelectionError () {
  * Function to reset the error
  * Reverts the color and text change
  */
-function resetUserSelection () {
-    userChoiceP.style.color = ("black")
-    userChoiceP.innerHTML = 'Choose your hand'
+function resetUserSelection() {
+    userChoiceParagraph.style.color = ("black")
+    userChoiceParagraph.innerHTML = 'Choose your hand'
 }
 
 /**
@@ -127,10 +128,10 @@ function resetUserSelection () {
  * If no value, game cannot run, trigger alert for the user
  * Reset user selection before next round
  */
-function goButton () {
+function goButton() {
     computerOption()
     if (computerSelection && userSelection) {
-        function generateImage (option) {
+        function generateImage(option) {
             const imgElement = `
                 <img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`
             return imgElement
@@ -154,7 +155,7 @@ function goButton () {
  * Create element and add to score div
  * Check user score and call endGame function if winning score is reached
  */
-function updateScore (winner) {
+function updateScore(winner) {
     const scoreElement = document.createElement('div')
     scoreElement.classList.add("round-win")
 
@@ -177,7 +178,10 @@ function updateScore (winner) {
 function endGame(winner) {
     const modalMessage = document.getElementById("modal-message");
     modalMessage.innerHTML = winner === 'user' ? 'You Win!' : 'You Lose!';
-    document.getElementById("game-over-modal").style.visibility = "visible";
+
+    setTimeout(() => {
+        document.getElementById("game-over-modal").style.visibility = "visible";
+    }, 1500)
 }
 
 // NOTE** in these two functions in getting the game-over-modal seperately, should I define it as a global variable?
@@ -197,8 +201,8 @@ function resetGame() {
         img.style.border = 'none'
     });
 
-    computerImageDiv.innerHTML = ''
-    userImageDiv.innerHTML = ''
+    computerImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`
+    userImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`
     userSelection = ''
 }
 
@@ -217,21 +221,21 @@ function closeModal() {
  * Play again function to reset the game area 
  * Hide the modal
  */
-function playAgain () {
+function playAgain() {
     resetGame()
     document.getElementById("game-over-modal").style.visibility = "hidden";
-} 
+}
 
 /**
  * Get winner function to calculate the winner of the round
  * Update the score of the round
  */
-function getWinner () {
+function getWinner() {
     const gameDraw = document.getElementById("game-draw")
 
     // checking for a draw
     if (computerSelection === userSelection) {
-        gameDraw.innerHTML = "The round is a draw"
+        gameDraw.innerHTML = "Draw!"
         return
     } else {
         gameDraw.innerHTML = ""
@@ -261,18 +265,18 @@ function getWinner () {
             updateScore("computer")
             return
         }
-    } 
+    }
 
-     //check for Scissors
-     if (userSelection === "scissors") {
+    //check for Scissors
+    if (userSelection === "scissors") {
         if (computerSelection === "paper") {
             userScore++
             updateScore("user")
             return
         } else {
-        computerScore++
-        updateScore("computer")
-        return
+            computerScore++
+            updateScore("computer")
+            return
         }
-    }   
+    }
 }

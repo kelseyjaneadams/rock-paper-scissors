@@ -1,14 +1,18 @@
 /* Global Style */
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: "poppins", sans-serif;
 }
 
 body {
     padding: 20px;
     text-align: center;
+}
+
+main {
+    width: 100%;
 }
 
 .title {
@@ -30,7 +34,7 @@ h1 {
 
 .game-area {
     background-color: rgb(229, 217, 255);
-    height: 85vh;
+    padding: 30px 0 30px 0;
 }
 
 /* Intro styles */
@@ -40,7 +44,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    gap: 40px; 
+    gap: 40px;
 }
 
 .intro p {
@@ -93,10 +97,13 @@ h1 {
 .results-area {
     display: flex;
     justify-content: center;
+    padding: 0 5% 0 5%;
+    margin-bottom: 30px;
 }
 
 .results-area h2 {
     padding: 20px;
+    font-size: 2rem;
 }
 
 .results-area img {
@@ -104,16 +111,27 @@ h1 {
     padding: 20px;
 }
 
-.user-image-div, .computer-image-div {
-    height: 280px;
-    width: 280px;
+.user-image-div,
+.computer-image-div {
+    width: 100%;
     border: black solid 4px;
     background-color: #573f8cbd;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.user-image-div .pre-game-fist {
+    transform: scaleX(-1);
+}
+
+.user-image-div img,
+.computer-image-div img {
+    width: 100%;
 }
 
 .user-selection-parent p {
     font-size: 1.2rem;
-    margin-top: 30px;
 }
 
 .user-selection {
@@ -124,6 +142,14 @@ h1 {
     padding: 20px;
 }
 
+.option-img {
+    object-fit: contain
+}
+
+#exit-button {
+    margin-bottom: 30px;
+}
+
 .game-buttons {
     display: flex;
     flex-direction: column;
@@ -131,7 +157,8 @@ h1 {
 }
 
 .game-buttons button {
-    width: 15%;
+    width: 30%;
+    max-width: 230px;
     margin: 0 auto;
     margin-bottom: 10px;
     font-size: 2rem;
@@ -154,12 +181,19 @@ h1 {
     align-items: center;
     border-top: none;
     width: 100%;
-    height: 50px;
+    max-height: 50px;
+    height: 100%;
     padding: 10px;
 }
 
 .computer-choice .round-scores {
-    justify-content: flex-end
+    justify-content: flex-end;
+}
+
+.computer-choice,
+.user-choice {
+    width: 100%;
+    max-width: 300px;
 }
 
 .round-win {
@@ -176,11 +210,10 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 20%;
 }
 
 .countdown h2 {
-    font-size: 2.5rem;
     color: rgb(84, 62, 138);
 }
 
@@ -235,29 +268,108 @@ h1 {
 
 @media (max-width: 620px) {
     .logo {
-        height: 70px;
+        height: 45px;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
         padding-bottom: 15px;
+    }
+
+    .results-area h2 {
+        font-size: 1.3rem;
     }
 
     .start-buttons button {
         padding: 15px;
         font-size: 1.5rem;
     }
+
+    .user-selection {
+        height: 130px;
+    }
+
+    .results-area h2 {
+        font-size: 1rem;
+    }
+
+    .results-area img {
+        padding: 10px;
+    }
+
+    .game-buttons button {
+        font-size: 1.5rem;
+    }
+
+    .round-scores {
+        height: 30px;
+        padding: 0;
+    }
+
+    .round-win {
+        height: 15px;
+        width: 15px;
+    }
+
+    .rules p {
+        font-size: 1rem;
+    }
+
 }
 
 @media (max-width: 410px) {
+    .logo {
+        height: 40px;
+    }
+
     h1 {
         font-size: 1.5rem;
         padding-bottom: 15px;
+    }
+
+    .results-area h2 {
+        font-size: 1rem;
     }
 
     .start-buttons button {
         padding: 15px;
         font-size: 1rem;
     }
-} 
 
+    .user-selection {
+        height: 110px;
+    }
+
+    .results-area img {
+        padding: 2px;
+    }
+
+    .modal {
+        height: 40%;
+    }
+
+    .game-buttons button {
+        font-size: 1.2rem;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .results-area h2 {
+        font-size: .6rem;
+    }
+
+    .user-selection-parent p {
+        font-size: .8rem;
+    }
+
+    .round-scores {
+        height: 30px;
+        padding: 0;
+    }
+
+    .round-win {
+        height: 15px;
+        width: 15px;
+    }
+}
