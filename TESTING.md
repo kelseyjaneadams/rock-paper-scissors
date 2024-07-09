@@ -40,7 +40,33 @@ The website was tested on the following browsers: Chrome, Firefox, Safari.
 
 ## Validator Testing
 ### HTML
+- No errors or warnings were found when passing through the official W3C validator.
+<img src="documentation/images/html-validator.png">
 
+### CSS
+- No errors or warnings were found when passing through the official W3C validator.
+<img src="documentation/images/css-validator.png">
 
+### JavaScript
+- No errors or warnings were found when passing through the official JSHint validator except the warnings relating to the 'const'.
+<img src="documentation/images/js-validator.png">
+
+## Accessibility and Performance
+- Using lighthouse in devtools I confirmed that the website is performing well, accessible and colors and fonts chosen are readable.
+<img src="documentation/images/lighthouse-report.png">
+
+## Bugs
+### Solved Bugs
+
+1. The 'Go' button when selected still plays the game even if a user has not selected an option.
+
+*Solution: Added a conditional statement to the goButton function that confirms the computer and user selections have a value before running the game*
+
+2. Images in the results area where not clearing inbetween rounds, nor when play again or exit are clicked.
+
+*Solution: In resetGame function I set the computer and user image back to an empty string to clear image.*
+
+### Unsolved Bugs
+None
 
 
