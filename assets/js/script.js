@@ -4,11 +4,11 @@ document.getElementById("rules-button").addEventListener("click", hideInstructio
 document.getElementById("play-button").addEventListener("click", playButton);
 document.getElementById("exit-button").addEventListener("click", exitButton);
 document.getElementById("go-button").addEventListener("click", goButton);
-//modal controls
+// modal controls
 document.getElementById("modal-exit").addEventListener("click", closeModal);
 document.getElementById("modal-play-again").addEventListener("click", playAgain);
 
-//user selection buttons
+// user selection buttons
 document.getElementById("rock").addEventListener("click", userOption);
 document.getElementById("paper").addEventListener("click", userOption);
 document.getElementById("scissors").addEventListener("click", userOption);
@@ -20,11 +20,11 @@ const computerImageDiv = document.getElementById("computer-image-div");
 const userImageDiv = document.getElementById("user-image-div");
 const userScoreDiv = document.getElementById("user-score");
 const computerScoreDiv = document.getElementById("computer-score");
-const optionImgs = document.querySelectorAll('.option-img');
-const userChoiceParagraph = document.getElementById("user-selection-text")
+const optionImgs = document.querySelectorAll(".option-img");
+const userChoiceParagraph = document.getElementById("user-selection-text");
 
-let userSelection = '';
-let computerSelection = '';
+let userSelection = "";
+let computerSelection = "";
 let userScore = 0;
 let computerScore = 0;
 
@@ -36,11 +36,11 @@ function hideInstructions() {
     const instructionsDiv = document.getElementById("rules");
 
     if (instructionsDiv.classList.contains("hide-rules")) {
-        instructionsDiv.classList.remove("hide-rules")
-        howToPlayButton.innerHTML = "Hide Rules"
+        instructionsDiv.classList.remove("hide-rules");
+        howToPlayButton.innerHTML = "Hide Rules";
     } else {
-        instructionsDiv.classList.add("hide-rules")
-        howToPlayButton.innerHTML = "Rules"
+        instructionsDiv.classList.add("hide-rules");
+        howToPlayButton.innerHTML = "Rules";
     }
 }
 
@@ -48,19 +48,19 @@ function hideInstructions() {
  * Play Button Function to hide the instructions/start page and show the game area page.
  */
 function playButton() {
-    resultsAreaDiv.classList.remove("hide-results-area")
-    introDiv.classList.add("hide-intro-div")
+    resultsAreaDiv.classList.remove("hide-results-area");
+    introDiv.classList.add("hide-intro-div");
 }
 
 /** 
  * Exit Button Function to leave game area and return to the start page.
  */
 function exitButton() {
-    const exitButton = document.getElementsByClassName(".exit-button");
     resultsAreaDiv.classList.add("hide-results-area");
     introDiv.classList.remove("hide-intro-div");
-    hideInstructions()
-    resetGame()
+    hideInstructions();
+    resetUserSelection();
+    resetGame();
 }
 
 /**
@@ -71,15 +71,17 @@ function exitButton() {
  * ternary condition to check if the no selection error was triggered and if so clears the error on option click
  */
 function userOption(event) {
-    optionImgs.forEach(img => {
-        img.style.border = 'none'
+    optionImgs.forEach(function (img) {
+        img.style.border = "none";
     });
     const selectedImage = event.target;
-    selectedImage.style.border = '#7d12ff solid 4px';
-    selectedImage.style.borderRadius = '50%';
+    selectedImage.style.border = "#7d12ff solid 4px";
+    selectedImage.style.borderRadius = "50%";
     userSelection = selectedImage.id;
 
-    userChoiceParagraph.style.color = ("red") ? resetUserSelection() : null
+    if (userChoiceParagraph.style.color === "red") {
+        resetUserSelection();
+    }
 }
 
 /**
@@ -87,7 +89,7 @@ function userOption(event) {
  * Save computer choice to computerSelection variable
  */
 function computerOption() {
-    const options = ['rock', 'paper', 'scissors'];
+    const options = ["rock", "paper", "scissors"];
     const randomOption = Math.floor(Math.random() * options.length) + 1;
     computerSelection = options[randomOption - 1];
     return computerSelection;
@@ -99,14 +101,14 @@ function computerOption() {
  * Clear the user and computer selected images
  */
 function noSelectionError() {
-    userChoiceParagraph.style.color = ("red")
-    userChoiceParagraph.innerHTML = 'Select your hand to play'
-    optionImgs.forEach(img => {
-        img.style.border = 'red solid 5px'
-        img.style.borderRadius = '50%';
+    userChoiceParagraph.style.color = "red";
+    userChoiceParagraph.innerHTML = "Select your hand to play";
+    optionImgs.forEach(function (img) {
+        img.style.border = "red solid 5px";
+        img.style.borderRadius = "50%";
     });
-    computerImageDiv.innerHTML = ''
-    userImageDiv.innerHTML = ''
+    computerImageDiv.innerHTML = "";
+    userImageDiv.innerHTML = "";
 }
 
 /**
@@ -114,8 +116,8 @@ function noSelectionError() {
  * Reverts the color and text change
  */
 function resetUserSelection() {
-    userChoiceParagraph.style.color = ("black")
-    userChoiceParagraph.innerHTML = 'Choose your hand'
+    userChoiceParagraph.style.color = "black";
+    userChoiceParagraph.innerHTML = "Choose your hand";
 }
 
 /**
@@ -129,25 +131,24 @@ function resetUserSelection() {
  * Reset user selection before next round
  */
 function goButton() {
-    computerOption()
+    computerOption();
     if (computerSelection && userSelection) {
         function generateImage(option) {
-            const imgElement = `
-                <img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`
-            return imgElement
+            const imgElement = `<img src="assets/images/${option}-image.webp" alt="A hand representing ${option}."></img>`;
+            return imgElement;
         }
-        computerImageDiv.innerHTML = generateImage(computerSelection)
-        userImageDiv.innerHTML = generateImage(userSelection)
+        computerImageDiv.innerHTML = generateImage(computerSelection);
+        userImageDiv.innerHTML = generateImage(userSelection);
 
-        getWinner()
-        optionImgs.forEach(img => {
-            img.style.border = 'none'
+        getWinner();
+        optionImgs.forEach(function (img) {
+            img.style.border = "none";
         });
     } else {
-        console.log('no selection')
-        noSelectionError()
+        console.log("no selection");
+        noSelectionError();
     }
-    userSelection = ''
+    userSelection = "";
 }
 
 /**
@@ -156,17 +157,17 @@ function goButton() {
  * Check user score and call endGame function if winning score is reached
  */
 function updateScore(winner) {
-    const scoreElement = document.createElement('div')
-    scoreElement.classList.add("round-win")
+    const scoreElement = document.createElement("div");
+    scoreElement.classList.add("round-win");
 
     if (winner === "user") {
-        userScoreDiv.appendChild(scoreElement)
+        userScoreDiv.appendChild(scoreElement);
     } else if (winner === "computer") {
-        computerScoreDiv.appendChild(scoreElement)
+        computerScoreDiv.appendChild(scoreElement);
     }
 
     if (userScore === 2 || computerScore === 2) {
-        endGame(winner)
+        endGame(winner);
     }
 }
 
@@ -177,14 +178,12 @@ function updateScore(winner) {
  */
 function endGame(winner) {
     const modalMessage = document.getElementById("modal-message");
-    modalMessage.innerHTML = winner === 'user' ? 'You Win!' : 'You Lose!';
+    modalMessage.innerHTML = winner === "user" ? "You Win!" : "You Lose!";
 
-    setTimeout(() => {
+    setTimeout(function () {
         document.getElementById("game-over-modal").style.visibility = "visible";
-    }, 1500)
+    }, 1500);
 }
-
-// NOTE** in these two functions in getting the game-over-modal seperately, should I define it as a global variable?
 
 /**
  * Reset the game function to clear scores, player options
@@ -194,16 +193,16 @@ function endGame(winner) {
 function resetGame() {
     userScore = 0;
     computerScore = 0;
-    userScoreDiv.innerHTML = '';
-    computerScoreDiv.innerHTML = '';
+    userScoreDiv.innerHTML = "";
+    computerScoreDiv.innerHTML = "";
 
-    optionImgs.forEach(img => {
-        img.style.border = 'none'
+    optionImgs.forEach(function (img) {
+        img.style.border = "none";
     });
 
-    computerImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`
-    userImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`
-    userSelection = ''
+    computerImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`;
+    userImageDiv.innerHTML = `<img class="pre-game-fist" src="assets/images/pre-game-fist.webp" alt="A closed fist indicating the start of the game.">`;
+    userSelection = "";
 }
 
 /**
@@ -214,7 +213,7 @@ function closeModal() {
     document.getElementById("game-over-modal").style.visibility = "hidden";
     resultsAreaDiv.classList.add("hide-results-area");
     introDiv.classList.remove("hide-intro-div");
-    resetGame()
+    resetGame();
 }
 
 /**
@@ -222,7 +221,7 @@ function closeModal() {
  * Hide the modal
  */
 function playAgain() {
-    resetGame()
+    resetGame();
     document.getElementById("game-over-modal").style.visibility = "hidden";
 }
 
@@ -231,52 +230,52 @@ function playAgain() {
  * Update the score of the round
  */
 function getWinner() {
-    const gameDraw = document.getElementById("game-draw")
+    const gameDraw = document.getElementById("game-draw");
 
     // checking for a draw
     if (computerSelection === userSelection) {
-        gameDraw.innerHTML = "Draw!"
-        return
+        gameDraw.innerHTML = "Draw!";
+        return;
     } else {
-        gameDraw.innerHTML = ""
+        gameDraw.innerHTML = "";
     }
 
     // check for Rock
     if (userSelection === "rock") {
         if (computerSelection === "scissors") {
-            userScore++
-            updateScore("user")
-            return
+            userScore++;
+            updateScore("user");
+            return;
         } else {
-            computerScore++
-            updateScore("computer")
-            return
+            computerScore++;
+            updateScore("computer");
+            return;
         }
     }
 
-    //check for Paper
+    // check for Paper
     if (userSelection === "paper") {
         if (computerSelection === "rock") {
-            userScore++
-            updateScore("user")
-            return
+            userScore++;
+            updateScore("user");
+            return;
         } else {
-            computerScore++
-            updateScore("computer")
-            return
+            computerScore++;
+            updateScore("computer");
+            return;
         }
     }
 
-    //check for Scissors
+    // check for Scissors
     if (userSelection === "scissors") {
         if (computerSelection === "paper") {
-            userScore++
-            updateScore("user")
-            return
+            userScore++;
+            updateScore("user");
+            return;
         } else {
-            computerScore++
-            updateScore("computer")
-            return
+            computerScore++;
+            updateScore("computer");
+            return;
         }
     }
 }
