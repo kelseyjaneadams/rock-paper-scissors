@@ -134,6 +134,8 @@ The menu page consists of two buttons:
 
 ## [Wireframe](documentation/images/wireframes.jpeg)
 
+## [Flowchart for Logic of Game](documentation/images/logic-flowchart.jpeg)
+
 ## Testing
 ## Deployment
 ### Deployment to GitHub Pages
@@ -156,7 +158,7 @@ In order to make a local copy of this project, you can clone it. In your IDE Ter
 
 ## Media
 
-All images used for the application were taken from Canva.
+All images used for the application were taken from [Canva](https://www.canva.com/en_gb/).
 
 ## Tools 
 - [cooler](https://coolors.co/) was used to create the colour palette.
