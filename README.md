@@ -6,7 +6,7 @@ The game is short, simple, and light-hearted. It consists of 3 rounds. Each roun
 
 The site can be accessed by this [link](https://kelseyjaneadams.github.io/rock-paper-scissors/).
 
-[IMAGE]
+<img src="documentation/images/amiresponisve.png">
 
 ## User Stories
 
@@ -110,6 +110,7 @@ The menu page consists of two buttons:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - was used as the foundation of the site.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/css) - was used to add the styles and layout of the site.
 - [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) - was used to arrange items on the page and to make pages responsive.
+- [JS](https://www.w3schools.com/js/) - was used to add interactivity to the site.
 - [VSCode](https://code.visualstudio.com/) - was used as the tool to write and edit code.
 - [Git](https://git-scm.com/) & [Gitpod](https://www.gitpod.io/) - was used for the version control of the website.
 - [GitHub](https://github.com/) - was used to host the code of the website. 
